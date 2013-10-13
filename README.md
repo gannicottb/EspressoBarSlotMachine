@@ -15,7 +15,7 @@ We'll be looking for exceptionally clean JavaScript and CSS, so focus on those f
 BDD
 ---
 Class SlotMachine
-should contain 3 reels
-should be able to spin the reels individually
-should determine what the prize for any of the 27 combinations should be
-should respond to input
++ should contain 3 reels
++ should be able to spin the reels individually
++ should determine what the prize for any of the 27 combinations should be
++ should respond to input
