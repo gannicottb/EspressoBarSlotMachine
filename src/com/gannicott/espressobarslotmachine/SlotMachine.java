@@ -1,5 +1,7 @@
 package com.gannicott.espressobarslotmachine;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 public class SlotMachine {
@@ -27,15 +29,16 @@ public class SlotMachine {
 		right = new Reel();
 	}
 	
-	public int[] pull()
+	public Map<String, Integer> pull()
 	{
-		int[] values = new int[4];
+		//int[] values = new int[4];
+		Map<String, Integer> values = new HashMap<String, Integer>();
 		//Spin each reel, pass those values to getPrize and return the result
 		
-		values[0] = left.spin();
-		values[1] = middle.spin();
-		values[2] = right.spin();
-		values[3] = getPrize(left.value(), middle.value(), right.value());
+		values.put("left", left.spin());
+		values.put("middle", middle.spin());
+		values.put("right", right.spin());
+		values.put("prize", getPrize(left.value(), middle.value(), right.value()));
 		
 		return values;
 	}
