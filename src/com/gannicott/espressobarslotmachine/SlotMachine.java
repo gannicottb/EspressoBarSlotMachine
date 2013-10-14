@@ -18,6 +18,7 @@ public class SlotMachine {
 	final int ESPRESSO = 2;
 	
 	Reel left, middle, right;
+	
 	public SlotMachine()
 	{
 		//Initialize reels
@@ -26,10 +27,17 @@ public class SlotMachine {
 		right = new Reel();
 	}
 	
-	public int pull()
+	public int[] pull()
 	{
+		int[] values = new int[4];
 		//Spin each reel, pass those values to getPrize and return the result
-		return getPrize(left.spin(), middle.spin(), right.spin());
+		
+		values[0] = left.spin();
+		values[1] = middle.spin();
+		values[2] = right.spin();
+		values[3] = getPrize(left.value(), middle.value(), right.value());
+		
+		return values;
 	}
 	
 	private int getPrize(int left, int middle, int right)
@@ -45,16 +53,31 @@ public class SlotMachine {
 	}
 	
 	private class Reel {
+		private int _value;
+		
 		Reel()
 		{
-			//I suppose this is where you decide which set of values go on this reel
+			_value = -1;//I suppose this is where you decide which set of values go on this reel
 		}
+		
+		public int value()
+		{
+			return _value;
+		}
+		
+//		public String imageURL()
+//		{
+//			String url = "";
+//			//return the correct URL based on the Reel's value
+//			return url;
+//		}
 		
 		public int spin()
 		{
 			//spin the reel and then return its value 0-2.
 			Random gen = new Random();
-			return gen.nextInt(3);			
+			_value = gen.nextInt(3);
+			return value();
 		}
 	}
 
